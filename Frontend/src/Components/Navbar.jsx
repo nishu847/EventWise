@@ -1,69 +1,120 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import Button from './Button';
+import React, { useContext, useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
-const Navbar = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+const BrandsNavbar = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
+  const navigate = useNavigate();
+  const location = useLocation(); // Hook to get current route
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
   };
 
+
+  const gotoevents = () => {
+    navigate('/events');
+  };
+
+  const gotohome = () => {
+    navigate('/');
+  };
+
+  const gotous = () => {
+    navigate('/aboutus');
+  };
+  const gotoshop = () => {
+    navigate('/shop');
+  };
+
+  const isActive = (path) => location.pathname === path;
+
   return (
-    <header className='bg-gray-50 shadow-lg border border-white w-full h-16 flex items-center px-6 relative'>
-      <div className='h-12 w-32 flex justify-center items-center'>
-        <p className='text-3xl blue-gradient_text italic font-bold'>Eventwise</p>
-      </div>
-      <nav className={`flex-grow flex items-center md:justify-center ${isMobileMenuOpen ? 'block' : 'hidden'} md:flex`}>
-        <NavLink to='/' className='mx-4 text-xl text-white dark-gradient_text'>
-          Home
-        </NavLink>
-        <NavLink to='/events' className='mx-4 text-xl text-white dark-gradient_text'>
-          Events
-        </NavLink>
-        <NavLink to='/shop' className='mx-4 text-xl text-white dark-gradient_text'>
-          Shop
-        </NavLink>
-        <NavLink to='/aboutus' className='mx-4 text-xl text-white dark-gradient_text'>
-          About Us
-        </NavLink>
-      </nav>
-      <div className='flex-grow md:flex md:items-center md:justify-end hidden'>
-        <Button type='button'>Register</Button>
-        <Button type='button'>Login</Button>
-      </div>
-      {/* Mobile menu button */}
-      <button
-        onClick={toggleMobileMenu}
-        className='md:hidden flex items-center p-2 ml-auto'
-        aria-label='Toggle navigation'
-      >
-        
-    
-      </button>
-      {/* Mobile menu */}
-      <div className={`md:hidden fixed top-16 right-0 w-full bg-gray-50 shadow-lg border border-white ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
-        <nav className='flex flex-col items-center py-4'>
-          <NavLink to='/' className='py-2 text-xl text-white dark-gradient_text'>
+    <div className='fixed top-0 left-0 w-full z-20'>
+      {/* Navbar */}
+      <div className='mx-4 my-2 flex justify-between items-center bg-[#f0f4f2] rounded-full px-8 py-4' style={{ border: '1px solid #6c9380' }}>
+        <div>
+          <img src="/src/assets/Logo.png" alt='logo' className='h-12 rounded-full' />
+        </div>
+        <div className='hidden md:flex gap-6 items-center justify-center font-semibold'>              
+          <a
+            className={`relative cursor-pointer ${isActive('/') ? 'text-[#6c9380]' : 'text-slate-600 hover:text-[#6c9380]'}`}
+            onClick={gotohome}
+          >
             Home
-          </NavLink>
-          <NavLink to='/events' className='py-2 text-xl text-white dark-gradient_text'>
+          </a>
+          <a
+            className={`relative cursor-pointer ${isActive('/aboutus') ? 'text-[#6c9380]' : 'text-slate-600 hover:text-[#6c9380]'}`}
+            onClick={gotous}
+          >
+            About
+          </a>
+          <a
+            className={`relative cursor-pointer ${isActive('/events') ? 'text-[#6c9380]' : 'text-slate-600 hover:text-[#6c9380]'}`}
+            onClick={gotoevents}
+          >
             Events
-          </NavLink>
-          <NavLink to='/shop' className='py-2 text-xl text-white dark-gradient_text'>
+          </a>
+          <a
+            className={`relative cursor-pointer ${isActive('/shop') ? 'text-[#6c9380]' : 'text-slate-600 hover:text-[#6c9380]'}`}
+            onClick={gotoshop}
+          >
             Shop
-          </NavLink>
-          <NavLink to='/aboutus' className='py-2 text-xl text-white dark-gradient_text'>
-            About Us
-          </NavLink>
-          <div className='flex flex-col items-center mt-4'>
-            <Button type='button'>Register</Button>
-            <Button type='button'>Login</Button>
-          </div>
-        </nav>
+          </a>
+        </div>
+        {/* Toggle Button for Sidebar on Small Screens */}
+        <div className='flex md:hidden'>
+          <button onClick={toggleSidebar} className='text-[#6c9380] focus:outline-none'>
+            {/* Hamburger Icon */}
+            <svg className='w-8 h-8' fill='none' stroke='currentColor' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
+              <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M4 6h16M4 12h16m-7 6h7' />
+            </svg>
+          </button>
+        </div>
       </div>
-    </header>
+
+      {/* Sidebar */}
+      <div
+        className={`fixed top-0 right-0 h-full w-64 bg-[#f0f4f2] text-[#6c9380] shadow-md transform ${
+          isSidebarOpen ? 'translate-x-0' : 'translate-x-full'
+        } transition-transform duration-300 ease-in-out z-50 md:hidden`}
+      >
+        {/* Close Button */}
+        <div className='flex justify-end p-4'>
+          <button onClick={toggleSidebar} className='text-[#6c9380] focus:outline-none hover:bg-white py-2 px-4 rounded-full'>
+            <i className='fa fa-close text-2xl'></i>
+          </button>
+        </div>
+        {/* Sidebar Content */}
+        <div className='flex flex-col gap-6 items-start p-6 font-semibold'>
+          <h2
+            className={`text-slate-600 cursor-pointer relative ${isActive('/') ? 'text-[#6c9380]' : ''}`}
+            onClick={() => { toggleSidebar(); gotohome(); }}
+          >
+            Home
+          </h2>
+          <h2
+            className={`text-slate-600 cursor-pointer relative ${isActive('/aboutus') ? 'text-[#6c9380]' : ''}`}
+            onClick={() => { toggleSidebar(); gotous(); }}
+          >
+            About
+          </h2>
+          <h2
+            className={`text-slate-600 cursor-pointer relative ${isActive('/events') ? 'text-[#6c9380]' : ''}`}
+            onClick={() => { toggleSidebar(); gotoevents(); }}
+          >
+            Events
+          </h2>
+          <h2
+            className={`text-slate-600 cursor-pointer relative ${isActive('/events') ? 'text-[#6c9380]' : ''}`}
+            onClick={() => { toggleSidebar(); gotoshop(); }}
+          >
+            Shop
+          </h2>
+        </div>
+      </div>
+    </div>
   );
 };
 
-export default Navbar;
+export default BrandsNavbar;

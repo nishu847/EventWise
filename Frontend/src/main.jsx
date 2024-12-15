@@ -8,6 +8,9 @@ import Home from './Pages/Home.jsx'
 import About from './Pages/About.jsx'
 import Shop from './Pages/Shop.jsx'
 import Event from './Pages/Event.jsx'
+import Register from './Pages/Register.jsx'
+import Login from './Pages/Login.jsx'
+import ForgotPassword from './Pages/ForgotPassword.jsx'
 const router=createBrowserRouter([
   {
     path:'/',
@@ -29,7 +32,18 @@ const router=createBrowserRouter([
         path:'/shop',
         element:<Shop/>
       },
-
+      {
+        path:'/register',
+        element:<Register/>
+      },
+      {
+        path:'/login',
+        element:<Login/>
+      },
+      {
+        path:'/forgotpassword',
+        element:<ForgotPassword/>
+      }
     ]
   }
 ])

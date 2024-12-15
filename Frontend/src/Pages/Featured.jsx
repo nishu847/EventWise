@@ -6,7 +6,7 @@ import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
 
 const Featured = () => {
   return (
-    <div className='bg-gray-50 w-full sm:w-[95%] mx-auto rounded-lg py-4 md:py-6 shadow-lg border border-white flex flex-col md:flex-row justify-center md:justify-around gap-4 p-4'>
+    <div className='bg-gray-50 w-full sm:w-[95%] mx-auto rounded-lg py-4 md:py-6 shadow-lg border border-white flex flex-col md:flex-row justify-center md:justify-around gap-4 p-4 m-5'>
 
       <Features text="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste illo praesentium eius neque placeat porro accusamus non fuga soluta tempora." heading="Updated Future Events" logo={EventNoteIcon} />  
 

@@ -7,7 +7,7 @@
       @apply bg-gradient-to-r from-[#8edef8] to-[#6f35d3] bg-clip-text text-transparent;
     }
     .dark-gradient_text {
-      @apply bg-gradient-to-r from-[#263261] to-[#070c72] bg-clip-text text-transparent;
+      @apply bg-gradient-to-r from-[#d7d9e3] to-[#6c6e8d] bg-clip-text text-transparent;
     }
     
 }  
