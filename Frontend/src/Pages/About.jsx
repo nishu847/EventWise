@@ -3,15 +3,9 @@ import React from 'react';
 const developers = [
     {
         name: 'Nishu Sharma',
-        role: 'Frontend Developer',
-        contribution: 'Led the design and implementation of the user interface and experience.',
+        role: 'Full Stack Developer',
+        contribution: 'Led the design and implementation of the user interface and experience along with all the backend login and database management.',
         image: 'src/assets/nishuimg.jpg' 
-    },
-    {
-        name: 'Prerna Jain',
-        role: 'Backend Developer',
-        contribution: 'Developed the server-side logic and database management.',
-        image: 'src/assets/prernaimg.jpg' 
     }
 ];
 

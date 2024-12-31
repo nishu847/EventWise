@@ -3,28 +3,32 @@ import bcrypt from "bcrypt"
 import jwt from 'jsonwebtoken'
 
 const userSchema=new mongoose.Schema({
-    username:{
-        type:String,
-        required:true,
-        lowercase:true,
-        index:true ,
-        unique:true ,
-        trim:true // makes the field searchable
-    },
-    email:{
-        type:String,
-        required:true,
-        unique:true,
-        lowercase:true,
-        trim:true
-    },
+    username: {
+        type: String,
+        required: true,
+        lowercase: true,
+        trim: true,
+        unique: true  // If this needs to be unique, use this constraint
+      },
+      email: {
+        type: String,
+        required: true,
+        unique: true, // Ensure this is unique if needed
+        lowercase: true,
+        trim: true
+      },
     password:{
         type:String,   // encrypted string to be used
         required:[true,"password required"],
         min:8,
         max:50
     },
-    isRegistered:{
+    role:{
+        type:String,
+        required:[true,"Please specify the role"],
+        enum:["Student","Organizer","Admin"]
+    },
+    isLoggedin:{
         type:Boolean,
         default:false,
         enum:[true,false]
@@ -55,10 +59,10 @@ userSchema.methods.isPasswordCorrect=async function(password){
 userSchema.methods.createaccesstoken= function(){
     return jwt.sign(
          {
-              __id: this._id,
+              _id: this._id,
              email:this.email,
              username:this.username,
-             fullname:this.fullname
+             role:this.role
          },
          process.env.ACCESS_TOKEN_SECRET_KEY,
          {
@@ -72,7 +76,8 @@ userSchema.methods.createaccesstoken= function(){
     return jwt.sign(
          {
          _id:this._id,
-         username:this.username
+         username:this.username,
+         role:this.role
          },
      process.env.REFRESH_TOKEN_SECRET_KEY,
      {

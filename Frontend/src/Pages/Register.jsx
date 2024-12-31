@@ -2,28 +2,22 @@ import { React, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { useRef } from "react";
 
 const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [role,setRole]=useState("")
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const navigate=useNavigate()
 
-
-  const usernameRef = useRef(null);
-  const emailRef = useRef(null);
-  const passwordRef = useRef(null);
-
   const onSubmit = async (event) => {
     event.preventDefault();
-    const payload = { username, email, password};
+    const payload = { username, email, password, role};
+    console.log(payload)
     try {
       const response = await axios.post('http://localhost:8000/v1/api/users/register', payload);
       console.log(response.data.data)
-      console.log(response.data.data.isRegistered)
-      localStorage.setItem('isRegistered', response.data.data.isRegistered);
       alert(response.data.message);
       navigate('/login');
     } catch (error) {
@@ -108,7 +102,20 @@ const Register = () => {
               value={email}
             />
           </div>
-  
+          <div className="font-semibold">
+              <label htmlFor="role">Role</label>
+              <select
+                id="role"
+                aria-label="role"
+                className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-red-500"
+                value={role}
+                onChange={(e) => setRole(e.target.value)}
+              >
+                <option value="Student">Student</option>
+                <option value="Organizer">Organizer</option>
+                <option value="Admin">Admin</option>
+              </select>
+            </div>
           <button
             type="submit"
             className="w-full bg-red-600 text-white rounded-lg px-4 py-2 hover:bg-red-700"

@@ -22,10 +22,16 @@ const Login = () => {
     event.preventDefault();
     const payload = {email, password };
     try {
-      const response = await axios.post('http://localhost:8000/v1/api/users/login', payload);
+      const response = await axios.post('http://localhost:8000/v1/api/users/login', payload,{ withCredentials: true } // Include cookies
+      );
+      console.log(response)
       alert("Login Successfully");
+      localStorage.setItem('isLoggedin', response.data.data.isLoggedin);
+      localStorage.setItem('role', response.data.data.role);
+      localStorage.setItem("user", JSON.stringify(response.data.data));
+
       navigate("/")
-      console.log(response.data)
+      console.log("response.data is",response.data)
     } catch (error) {
       alert(error.response?.data?.error || 'Login failed');
     }

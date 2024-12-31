@@ -11,10 +11,10 @@ CORS is used for cross origin and proxies are set in it';.
 origin= to know from where thedata or url is coming
 */
 app.use(cors({
-    origin:process.env.CORS_ORIGIN,
-    credentials:true
+    origin: 'http://localhost:5173', // Replace with your frontend URL
+  credentials: true, // Allow credentials (cookies, authorization headers)
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow specific HTTP methods
 }))
-
 // jab data aata h khi se to agr wo json format me h to hume use accept krna hoga (configure).
 // Limit is used to tell the user the max. amount of json jo ki accept hoga humare server me
 // limit dena zroori h kyuki agr unlimited aaya---- to site crash ho skti h 
@@ -34,10 +34,13 @@ app.use(cookieParser())
 // importing router
 
 import userRouter from "./routes/userroutes.js"
-
-
+import eventRouter from "./routes/eventroutes.js"
+import productRouter from "./routes/productroutes.js"
 //declaring routers
 app.use("/v1/api/users",userRouter)
+app.use("/v1/api/events",eventRouter)
+app.use("/v1/api/products",productRouter)
+
 
 export {app}
 

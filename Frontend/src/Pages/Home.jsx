@@ -5,7 +5,7 @@ import { DateRange, Info, LocationOn } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 const Home = () => {
-  const [isRegistered, setIsRegistered] = useState(false); // State to track registration
+  const [isLoggedin, setIsLoggedin] = useState(false); // State to track registration
 const navigate=useNavigate();
 
   const register = () => {
@@ -22,8 +22,8 @@ const goToEvent = () => {
   ];
 
   useEffect(() => {
-    const registeredStatus = localStorage.getItem('isRegistered') === 'true';
-    setIsRegistered(registeredStatus);
+    const loginStatus = localStorage.getItem('isLoggedin') === 'true';
+    setIsLoggedin(loginStatus);
   }, []);
 
   return (
@@ -52,7 +52,7 @@ const goToEvent = () => {
       <h3>Details</h3>
     </div>
   </div>
-  {isRegistered ? (
+  {isLoggedin ? (
           <Button
             type="button"
             onClick={goToEvent}
