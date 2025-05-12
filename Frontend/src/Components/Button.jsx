@@ -10,7 +10,7 @@ function Button({
 }){
 
     return(
-        <button className={` block bg-[#6c9380] hover:bg-[#4c705e] focus:bg-[#8ec0a7] text-white font-semibold rounded-lg 
+        <button className={` block bg-[#ef8275] hover:bg-[#ef8275] focus:bg-[#ef8275] text-white font-semibold rounded-lg 
        ${classname} ${bgcolor} ${text} `} type={type}  {...props}>{children}</button>
     )
 }

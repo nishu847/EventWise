@@ -2,7 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
-import { ProductsProvider } from '../Context/ProductContext.jsx'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Layout from './Layout.jsx'
 import Home from './Pages/Home.jsx'
@@ -17,10 +16,6 @@ import ProtectedRoute from './Components/ProtectedRoute.jsx'
 import Unauthorized from './Pages/Unauthorised.jsx'
 import Profile from './Pages/Profile.jsx'
 import EditEvent from './Pages/EditEvent.jsx'
-import AllProducts from './Pages/AllProducts.jsx'
-import CreateProduct from './Pages/CreateProduct.jsx'
-import ProductDetails from './Pages/ProductDetails.jsx'
-import EditProduct from './Pages/EditProduct.jsx'
 const router=createBrowserRouter([
   {
     path:'/',
@@ -34,22 +29,7 @@ const router=createBrowserRouter([
         path:'/aboutus',
         element:<About/>
       },
-      {
-        path:'/products',
-        element: (
-          <ProtectedRoute allowedRoles={["Admin", "Organizer", "Student"]}>
-            <AllProducts />
-          </ProtectedRoute>
-        ),
-        children:[
-          {
-            path:'create',
-            element:(
-                <CreateProduct />
-            )
-          },          
-        ]
-      },
+     
       {
         path:'/register',
         element:<Register/>
@@ -91,24 +71,14 @@ const router=createBrowserRouter([
         path:"/events/edit/:eventId",
         element:<EditEvent/>
       },
-      {
-        path:'/:productId',
-        element:<ProductDetails/>
-      } ,
-      {
-        path:'/products/update/:productId',
-        element:<EditProduct/>
-      }
     ]
   }
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <ProductsProvider>
       <RouterProvider router={router}>
         <App />
       </RouterProvider>
-    </ProductsProvider>
   </React.StrictMode>
 )

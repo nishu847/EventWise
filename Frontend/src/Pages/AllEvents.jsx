@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Eventcard from "../Components/Eventcard";
-import { useNavigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
-
+import { useLocation, useNavigate } from "react-router-dom"; // already done
+ // at top inside component
 const AllEvents = () => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -13,14 +13,19 @@ const AllEvents = () => {
   const [date,setDate] = useState("")
   const [category, setCategory] = useState("");
   const [venue, setVenue] = useState("");
-
+const location = useLocation();
     const navigate=useNavigate();
     const createevent=()=>{
         navigate('create')
     }
-
+useEffect(() => {
+  if (location.state?.refresh) {
+    fetchEvents();
+    navigate(location.pathname, { replace: true }); // clears the state after refresh
+  }
+}, [location, navigate]);
   useEffect(() => {
-    const userrole=localStorage.getItem("role")
+    const userrole=sessionStorage.getItem("role")
     setRole(userrole)
     fetchEvents();
   }, [date, category, venue]);
@@ -51,13 +56,13 @@ const AllEvents = () => {
   );
 
   return (
-    <div className="min-h-screen bg-[#f7f9f8] p-6">
+    <div className="min-h-screen bg-[#0f0607] p-6">
       <div className="max-w-[100%] mx-auto">
       <h1 className="text-4xl font-extrabold text-center text-gray-800 mb-8 mt-20 relative">
-  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#cbeddd] to-[#30433a]">
+  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#ffbeb7] to-[#e95949]">
     Upcoming Events
   </span>
-  <div className="absolute left-1/2 -translate-x-1/2 -bottom-2 w-20 h-1 bg-gradient-to-r from-[#cbeddd] to-[#3d5449] rounded-full"></div>
+  <div className="absolute left-1/2 -translate-x-1/2 -bottom-2 w-20 h-1 bg-gradient-to-r from-[#ffb9b1] to-[#e95949] rounded-full"></div>
 </h1>
 
   
@@ -105,7 +110,7 @@ const AllEvents = () => {
   
           {/* Add Event Button */}
           {(role==="Organizer" || role==="Admin") && <button
-            className="bg-[#6b8fa9] text-white font-medium px-6 py-3 rounded-lg shadow hover:bg-[#80a4bd] transition duration-300"
+            className="bg-[#f09d93] text-[#fdfeec] font-medium px-6 py-3 rounded-lg shadow hover:bg-[#f09d93] transition duration-300"
             onClick={createevent}
           >
             + Add Event
@@ -114,7 +119,7 @@ const AllEvents = () => {
   
         {/* Events List */}
         {loading ? (
-          <div className="text-center text-gray-500 text-lg">
+          <div className="text-center text-[#1e3034] text-lg">
             Loading events...
           </div>
         ) : error ? (
@@ -122,7 +127,7 @@ const AllEvents = () => {
             Error: {error}
           </div>
         ) : filteredEvents.length > 0 ? (
-          <div className="grid grid-cols-1 gap-6 mx-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mx-6">
             {filteredEvents.map((event) => (
               <Eventcard
                 key={event._id}

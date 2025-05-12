@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from "axios";
 
@@ -25,71 +25,61 @@ const BrandsNavbar = () => {
     navigate('/aboutus');
   };
 
-  const gotoshop = () => {
-    navigate('/products');
-  };
-
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen); // Toggle dropdown visibility
   };
 
-  const logout = async (event) => {
-    event.preventDefault();
-    try {
-      // Request to backend API to log out
-      const response = await axios.post("http://localhost:8000/v1/api/users/logout", {}, { withCredentials: true });
-      console.log("Logout response:", response); 
-      localStorage.removeItem("isLoggedin");
-      localStorage.removeItem("user");
+ const logout = async (event) => {
+  event.preventDefault();
+  try {
+    const response = await axios.post("http://localhost:8000/v1/api/users/logout", {}, { withCredentials: true });
+    console.log("Logout response:", response); 
 
-      // Handle response, alert user and redirect
-      alert("User successfully logged out");
-      setIsSidebarOpen(false); // Close sidebar on logout
-      setIsDropdownOpen(false); // Close dropdown on logout
-      navigate("/login"); // Redirect to login page
-    } catch (error) {
-      alert(error.response?.data?.error || 'Logout failed');
-    }
-  };
+    // Remove from sessionStorage instead of sessionstorage
+    sessionStorage.removeItem("isLoggedin");
+    sessionStorage.removeItem("user");
+
+    alert("User successfully logged out");
+    setIsSidebarOpen(false);
+    setIsDropdownOpen(false);
+    navigate("/login");
+  } catch (error) {
+    alert(error.response?.data?.error || 'Logout failed');
+  }
+};
 
   const isActive = (path) => location.pathname === path;
 
   return (
     <div className="fixed top-0 left-0 w-full z-20">
       {/* Navbar */}
-      <div className="mx-4 my-2 flex justify-between items-center bg-[#f0f4f2] rounded-full px-8 py-4" style={{ border: '1px solid #6c9380' }}>
+      <div className="mx-4 my-2 flex justify-between items-center bg-[#1b1a1a] rounded-full px-8 py-4" style={{ border: '1px solid #ef8275' }}>
         <div>
           <img src="/src/assets/Logo.png" alt="logo" className="h-12 rounded-full" />
         </div>
         <div className="hidden md:flex gap-6 items-center justify-center font-semibold">
           <a
-            className={`relative cursor-pointer ${isActive('/') ? 'text-[#6c9380]' : 'text-slate-600 hover:text-[#6c9380]'}`}
+            className={`relative cursor-pointer ${isActive('/') ? 'text-[#ef8275]' : 'text-[#fdfeec] hover:text-[#ef8275]'}`}
             onClick={gotohome}
           >
             Home
           </a>
           <a
-            className={`relative cursor-pointer ${isActive('/aboutus') ? 'text-[#6c9380]' : 'text-slate-600 hover:text-[#6c9380]'}`}
+            className={`relative cursor-pointer ${isActive('/aboutus') ? 'text-[#ef8275]' : 'text-[#fdfeec] hover:text-[#ef8275]'}`}
             onClick={gotous}
           >
             About
           </a>
           <a
-            className={`relative cursor-pointer ${isActive('/events') ? 'text-[#6c9380]' : 'text-slate-600 hover:text-[#6c9380]'}`}
+            className={`relative cursor-pointer ${isActive('/events') ? 'text-[#ef8275]' : 'text-[#fdfeec] hover:text-[#ef8275]'}`}
             onClick={gotoevents}
           >
             Events
           </a>
-          <a
-            className={`relative cursor-pointer ${isActive('/events') ? 'text-[#6c9380]' : 'text-slate-600 hover:text-[#6c9380]'}`}
-            onClick={gotoshop}
-          >
-            Shop
-          </a>
           <div className="relative">
             <button
               onClick={toggleDropdown}
-              className="relative cursor-pointer text-white bg-[#6c9380] pt-3 pb-3 pr-5 pl-5 rounded-2xl"
+              className="relative cursor-pointer text-white bg-[#ef8275] pt-3 pb-3 pr-5 pl-5 rounded-2xl"
             >
               Profile
               {/* Add a dropdown icon (optional) */}
@@ -116,7 +106,7 @@ const BrandsNavbar = () => {
         </div>
         {/* Toggle Button for Sidebar on Small Screens */}
         <div className="flex md:hidden">
-          <button onClick={toggleSidebar} className="text-[#6c9380] focus:outline-none">
+          <button onClick={toggleSidebar} className="text-[#ef8275] focus:outline-none">
             {/* Hamburger Icon */}
             <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
@@ -127,39 +117,31 @@ const BrandsNavbar = () => {
 
       {/* Sidebar */}
       <div
-        className={`fixed top-0 right-0 h-full w-64 bg-[#f0f4f2] text-[#6c9380] shadow-md transform ${isSidebarOpen ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-300 ease-in-out z-50 md:hidden`}
+        className={`fixed top-0 right-0 h-full w-64 bg-[#0F0607] text-[#ef8275] shadow-md transform ${isSidebarOpen ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-300 ease-in-out z-50 md:hidden`}
       >
         {/* Close Button */}
-        <div className="flex justify-end p-4">
-          <button onClick={toggleSidebar} className="text-[#6c9380] focus:outline-none hover:bg-white py-2 px-4 rounded-full">
-            <i className="fa fa-close text-2xl"></i>
-          </button>
-        </div>
+        <button onClick={toggleSidebar} className="text-[#ef8275] text-2xl hover:bg-white py-2 px-4 rounded-full">
+  &times;
+</button>
         {/* Sidebar Content */}
         <div className="flex flex-col gap-6 items-start p-6 font-semibold">
           <h2
-            className={`text-slate-600 cursor-pointer relative ${isActive('/') ? 'text-[#6c9380]' : ''}`}
+            className={`text-[#ef8275] cursor-pointer relative ${isActive('/') ? 'text-[#ef8275]' : ''}`}
             onClick={() => { toggleSidebar(); gotohome(); }}
           >
             Home
           </h2>
           <h2
-            className={`text-slate-600 cursor-pointer relative ${isActive('/aboutus') ? 'text-[#6c9380]' : ''}`}
+            className={`text-[#ef8275] cursor-pointer relative ${isActive('/aboutus') ? 'text-[#ef8275]' : ''}`}
             onClick={() => { toggleSidebar(); gotous(); }}
           >
             About
           </h2>
           <h2
-            className={`text-slate-600 cursor-pointer relative ${isActive('/events') ? 'text-[#6c9380]' : ''}`}
+            className={`text-[#ef8275] cursor-pointer relative ${isActive('/events') ? 'text-[#ef8275]' : ''}`}
             onClick={() => { toggleSidebar(); gotoevents(); }}
           >
             Events
-          </h2>
-          <h2
-            className={`text-slate-600 cursor-pointer relative ${isActive('/events') ? 'text-[#6c9380]' : ''}`}
-            onClick={() => { toggleSidebar(); gotoshop(); }}
-          >
-            Shop
           </h2>
         </div>
       </div>

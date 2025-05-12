@@ -38,7 +38,7 @@ const ForgotPassword = () => {
   return (
     <div>
       {step === 1 && (
-        <div className="flex items-center justify-center min-h-screen bg-gray-100">
+        <div className="flex items-center justify-center min-h-screen bg-[#0F0607]">
           <div className="w-full max-w-sm p-6 bg-white rounded-lg shadow-md">
             <h2 className="text-2xl font-semibold text-gray-800 text-center">
               Forgot Password
@@ -65,7 +65,7 @@ const ForgotPassword = () => {
 
               <button
                 type="submit"
-                className="w-full mt-4 px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:outline-none"
+                className="w-full mt-4 px-4 py-2 text-white bg-[#F4ACA4] rounded-md hover:bg-[#ea6d5f]"
                 onClick={getOTP}
               >
                 Reset Password
@@ -75,8 +75,8 @@ const ForgotPassword = () => {
         </div>
       )}
       {step === 2 && (
-        <div className="flex items-center justify-center min-h-screen bg-gray-100">
-          <div className="w-full max-w-sm p-6 bg-white rounded-lg shadow-md">
+        <div className="flex items-center justify-center min-h-screen bg-[#0F0607]">
+          <div className="w-full max-w-sm p-6 bg-[#0F0607] rounded-lg shadow-md">
             <h2 className="text-2xl font-semibold text-gray-800 text-center">
               Check Your Email
             </h2>

@@ -26,9 +26,12 @@ const Login = () => {
       );
       console.log(response)
       alert("Login Successfully");
-      localStorage.setItem('isLoggedin', response.data.data.isLoggedin);
-      localStorage.setItem('role', response.data.data.role);
-      localStorage.setItem("user", JSON.stringify(response.data.data));
+      sessionStorage.setItem('isLoggedin', response.data.data.isLoggedin);
+      sessionStorage.setItem('role', response.data.data.role);   
+      sessionStorage.setItem("user", JSON.stringify(response.data.data));
+      sessionStorage.setItem("isLoggedin", true);
+
+
 
       navigate("/")
       console.log("response.data is",response.data)
@@ -38,17 +41,14 @@ const Login = () => {
   };
   
   return (
-    <div className="flex h-[80vh] w-full justify-center items-center mt-20 ">
+    <div className="flex h-[80vh] w-full justify-center items-center mt-20 bg-[#0f0607]">
     <div className="flex w-7/8 max-w-5xl shadow-2xl rounded-lg overflow-hidden p-10">
-      
-      {/* Left Side with Background Image */}
-   {/* Left Side with Background Image */}
-<div className="hidden md:flex w-1/2 bg-pink-100 p-10 flex-col justify-center items-center relative">
+<div className="hidden md:flex w-1/2 bg-pink-100 p-10 flex-col justify-center items-center relative" >
 {/* Background Image */}
 <div
   className="absolute inset-0 bg-cover bg-center"
   style={{
-    backgroundImage: `url('/src/assets/bgimage.jpg')`,
+    backgroundImage: `url('/assets/bgimage.jpg')`,
     filter: "brightness(100%)", // Increase brightness if necessary
   }}
 ></div>
@@ -61,9 +61,9 @@ const Login = () => {
     Get Back & Start{" "}
     <span className="text-red-600">Be Informed</span>
   </h2>
-  <p className="text-gray-500 mt-4">
+  <p className="text-[#1e3034] mt-4">
   One-stop platform for all college events    </p>
-  <p className="text-gray-500 mt-4">Create an Account in just a few steps!!</p>
+  <p className="text-[#1e3034] mt-4">Create an Account in just a few steps!!</p>
   <button
     onClick={() => navigate("/register")}
     className="mt-3 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-8 rounded-full"
@@ -75,7 +75,7 @@ const Login = () => {
 
 
       {/* Right Side */}
-      <div className="w-full md:w-1/2 bg-[#e2e9e6] p-10 flex flex-col justify-center items-center">
+      <div className="w-full md:w-1/2 bg-[#fadedb] p-10 flex flex-col justify-center items-center">
         <h2 className="text-2xl font-bold text-gray-800 text-center">
           <span className="inline-block bg-[pink-200]">Welcome Back!!</span>
         </h2>

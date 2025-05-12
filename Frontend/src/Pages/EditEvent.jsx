@@ -102,13 +102,13 @@ const EditEvent = () => {
   
   return (
     <div>
-      <div className="min-h-screen bg-gray-50 p-8">
-      <h1 className="text-4xl font-extrabold text-center text-gray-800 mb-8 mt-20 relative">
-  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#cbeddd] to-[#30433a] mb-10">
+      <div className="min-h-screen bg-[#0F0607] p-8">
+      <h1 className="text-4xl font-extrabold text-center text-white mb-8 mt-20 relative">
+  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#fecdc8] to-[#f65c4b] mb-10">
 Edit Event  </span>
-  <div className="absolute left-1/2 -translate-x-1/2 -bottom-2 w-20 h-1 bg-gradient-to-r from-[#cbeddd] to-[#3d5449] rounded-full"></div>
+  <div className="absolute left-1/2 -translate-x-1/2 -bottom-2 w-20 h-1 bg-gradient-to-r from-[#fecdc8] to-[#f65c4b] rounded-full"></div>
 </h1>
-        <div className="bg-white p-6 rounded-xl shadow-lg max-w-5xl mx-auto border border-gray-200">
+        <div className="bg-white p-6 rounded-xl shadow-lg max-w-5xl mx-auto" style={{ border: '2px solid #ef8275' }}>
           {/* Form Section */}
           <div className="space-y-6">
             {/* Event Name, Venue, and Capacity */}
@@ -251,7 +251,7 @@ Edit Event  </span>
             <div className="text-center">
               <button
                 onClick={onSave}
-                className="bg-[#6b8fa9] hover:bg-[#8eb8d6] text-white px-6 py-3 rounded-lg transition-transform transform hover:scale-105"
+                className="bg-[#F4ACA4] hover:bg-[#e96c5f] text-[#FDFEEC] px-6 py-3 rounded-lg transition-transform transform hover:scale-105"
               >
                 Save Changes
               </button>
