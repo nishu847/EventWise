@@ -20,13 +20,13 @@ const Home = () => {
       title: "Stay Updated Effortlessly",
       description: `Get early access to event registrations and RSVP easily to secure your spot at popular events.`,
       image:
-        "src/assets/illus1.jpeg",
+        "/assets/illus1.jpeg",
     },
     {
       title: "Reminders and Alerts",
       description: `EventWise sends automatic reminders for events you’re interested in, so you won’t forget the important dates.`,
       image:
-        "src/assets/illus2.jpg",
+        "/assets/illus2.jpg",
     },
   ];
 
@@ -35,7 +35,7 @@ const Home = () => {
         name: 'Nishu Sharma',
         role: 'Full Stack Developer',
         contribution: 'Led the design and implementation of the user interface and experience along with all the backend login and database management.',
-        image: 'src/assets/nishuimg.jpg' 
+        image: '/assets/nishuimg.jpg' 
     }
 ];
 
@@ -129,7 +129,7 @@ const Home = () => {
         className="overflow-hidden rounded-xl shadow-md transform transition duration-300 hover:scale-105 hover:shadow-xl"
       >
         <img
-          src={`src/assets/${img}`}
+          src={`/assets/${img}`}
           alt={`Event ${idx + 1}`}
           className="w-full h-60 object-cover"
         />
@@ -149,7 +149,7 @@ const Home = () => {
         title={item.title}
         description={item.description}
         image={item.image}
-        reverse={false} // keep consistent alignment for symmetry
+        reverse={false} 
         register={register}
       />
     ))}

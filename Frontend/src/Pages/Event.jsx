@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import PostAddIcon from "@mui/icons-material/PostAdd";
-import Button from "../Components/Button";
 import Eventform from "../Components/Eventform";
 
 const Event = () => {

@@ -9,19 +9,19 @@ const Footer = () => {
       <div className="flex space-x-6">
      
           <a href="https://github.com/nishu847" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400">
-           <img src="src/assets/icons8-github-48.png "alt="" className='h-10 w-10'/>
+           <img src="assets/icons8-github-48.png "alt="" className='h-10 w-10'/>
           </a>
 
           <a href="https://www.linkedin.com/in/nishu-sharma0623" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400">
-          <img src="src/assets/icons8-linkedin-48.png"alt="" className='h-10 w-10'/>
+          <img src="assets/icons8-linkedin-48.png"alt="" className='h-10 w-10'/>
           </a>
 
           <a href="https://www.linkedin.com/in/nishu-sharma0623" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400">
-          <img src="src/assets/icons8-facebook-48.png"alt="" className='h-10 w-10'/>
+          <img src="assets/icons8-facebook-48.png"alt="" className='h-10 w-10'/>
           </a>
 
           <a href="https://www.linkedin.com/in/nishu-sharma0623" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400">
-          <img src="src/assets/icons8-instagram-48.png"alt="" className='h-10 w-10'/>
+          <img src="assets/icons8-instagram-48.png"alt="" className='h-10 w-10'/>
           </a>
         </div>
 

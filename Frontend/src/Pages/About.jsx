@@ -5,7 +5,7 @@ const developers = [
         name: 'Nishu Sharma',
         role: 'Full Stack Developer',
         contribution: 'Led the design and implementation of the user interface and experience along with all the backend login and database management.',
-        image: 'src/assets/nishuimg.jpg' 
+        image: 'assets/nishuimg.jpg' 
     }
 ];
 

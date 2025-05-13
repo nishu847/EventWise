@@ -55,7 +55,7 @@ const BrandsNavbar = () => {
       {/* Navbar */}
       <div className="mx-4 my-2 flex justify-between items-center bg-[#1b1a1a] rounded-full px-8 py-4" style={{ border: '1px solid #ef8275' }}>
         <div>
-          <img src="/src/assets/Logo.png" alt="logo" className="h-12 rounded-full" />
+          <img src="assets/Logo.png" alt="logo" className="h-12 rounded-full" />
         </div>
         <div className="hidden md:flex gap-6 items-center justify-center font-semibold">
           <a
