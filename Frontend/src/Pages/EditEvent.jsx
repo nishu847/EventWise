@@ -23,7 +23,7 @@ const EditEvent = () => {
     const fetchEventDetails = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/v1/api/events/${eventId}`
+          `https://event-backend-7nta.onrender.com/v1/api/events/${eventId}`
         );
         console.log("response is :", response.data.data);
         setEventDetails(response.data.data);
@@ -77,7 +77,7 @@ const EditEvent = () => {
   
       // Perform the PUT request to update the event
       const response = await axios.put(
-        `http://localhost:8000/v1/api/events/edit/${eventId}`,
+        `https://event-backend-7nta.onrender.com/v1/api/events/edit/${eventId}`,
         formData,
         {
           headers: {

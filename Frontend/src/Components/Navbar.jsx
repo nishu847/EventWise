@@ -32,7 +32,7 @@ const BrandsNavbar = () => {
  const logout = async (event) => {
   event.preventDefault();
   try {
-    const response = await axios.post("http://localhost:8000/v1/api/users/logout", {}, { withCredentials: true });
+    const response = await axios.post("https://event-backend-7nta.onrender.com/v1/api/users/logout", {}, { withCredentials: true });
     console.log("Logout response:", response); 
 
     // Remove from sessionStorage instead of sessionstorage

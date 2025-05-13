@@ -53,7 +53,7 @@ const CreateEvent = () => {
 
     try {
       setUploading(true);
-      await axios.post("http://localhost:8000/v1/api/events/create", formData, {
+      await axios.post("https://event-backend-7nta.onrender.com/v1/api/events/create", formData, {
         headers: { "Content-Type": "multipart/form-data" },
         withCredentials: true,
       });

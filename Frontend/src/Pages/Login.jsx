@@ -22,7 +22,7 @@ const Login = () => {
     event.preventDefault();
     const payload = {email, password };
     try {
-      const response = await axios.post('http://localhost:8000/v1/api/users/login', payload,{ withCredentials: true } // Include cookies
+      const response = await axios.post('https://event-backend-7nta.onrender.com/v1/api/users/login', payload,{ withCredentials: true } // Include cookies
       );
       console.log(response)
       alert("Login Successfully");

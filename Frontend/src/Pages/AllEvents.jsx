@@ -42,7 +42,7 @@ useEffect(() => {
       if (category) params.category = category;
       if (venue) params.venue = venue;
 
-      const response = await axios.get("http://localhost:8000/v1/api/events", { params });
+      const response = await axios.get("https://event-backend-7nta.onrender.com/v1/api/events", { params });
       setEvents(response.data.data); // Assuming the API returns { data: events }
     } catch (err) {
       setError(err.response?.data?.message || "An error occurred while fetching events");

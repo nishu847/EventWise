@@ -14,7 +14,7 @@ const ForgotPassword = () => {
     e.preventDefault();
     const payload={email}
     try {
-        await axios.post('http://localhost:8000/v1/api/users/forgotpassword',payload);
+        await axios.post('https://event-backend-7nta.onrender.com/v1/api/users/forgotpassword',payload);
         alert(`OTP sent to ${email}`)
         setStep(2)
     } catch (error) {
@@ -27,7 +27,7 @@ const ForgotPassword = () => {
     e.preventDefault();
     const payload={otp,email,newpassword}
     try {
-        await axios.post("http://localhost:8000/v1/api/users/resetpassword",payload)
+        await axios.post("https://event-backend-7nta.onrender.com/v1/api/users/resetpassword",payload)
         alert("Password Reset Successfully")
         navigate('/login')
     } catch (error) {

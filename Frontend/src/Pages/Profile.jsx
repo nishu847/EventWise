@@ -20,7 +20,7 @@ const Profile = () => {
       setLoading(true);
       setUser(userData);
       const response = await axios.get(
-        `http://localhost:8000/v1/api/users/${userId}/events`
+        `https://event-backend-7nta.onrender.com/v1/api/users/${userId}/events`
       );
       console.log(response.data.data)
       setEvents(response.data.data);
@@ -40,7 +40,7 @@ const Profile = () => {
 
   const handleUpdateUsername = async () => {
     try {
-      await axios.put(`http://localhost:8000/v1/api/users/${userId}`, {
+      await axios.put(`https://event-backend-7nta.onrender.com/v1/api/users/${userId}`, {
         username: updatedUsername,
       });
       alert("Username updated successfully!");
@@ -52,7 +52,7 @@ const Profile = () => {
 
   const handleDeleteEvent = async (eventId) => {
     try {
-      await axios.delete(`http://localhost:8000/v1/api/events/${eventId}`);
+      await axios.delete(`https://event-backend-7nta.onrender.com/v1/api/events/${eventId}`);
       setEvents(events.filter((event) => event._id !== eventId));
       alert("Event deleted successfully!");
     } catch (err) {

@@ -17,7 +17,7 @@ const Register = () => {
     console.log("payload",payload)
     try {
       console.log("sending:")
-      const response = await axios.post('http://localhost:8000/v1/api/users/register', payload);
+      const response = await axios.post('https://event-backend-7nta.onrender.com/v1/api/users/register', payload);
       console.log("response",response.data)
       alert(response.data.message);
       navigate('/login');
