@@ -129,7 +129,7 @@ const Register = () => {
 
           <p className="text-gray-600 mt-4 text-center">
             Already have an account?{" "}
-            <a href="/login" className="text-red-600 underline">
+            <a href="https://event-backend-7nta.onrender.com/v1/api/users/login" className="text-red-600 underline">
               Sign In
             </a>
           </p>

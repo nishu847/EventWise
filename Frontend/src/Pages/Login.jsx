@@ -12,10 +12,10 @@ const Login = () => {
   const navigate = useNavigate();
 
   const change = () => {
-    navigate("/register");
+    navigate("https://event-backend-7nta.onrender.com/v1/api/users/register");
   };
   const forgot=()=>{
-    navigate("/forgotpassword")
+    navigate("https://event-backend-7nta.onrender.com/v1/api/users/forgotpassword")
   }
 
   const onSubmit = async (event) => {
